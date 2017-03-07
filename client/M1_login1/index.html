@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-resource.min.js"></script>
+    <script src="js/run1.js"></script>
+    <script src="bower_components/angular-bcrypt/dist/dtrw.bcrypt.js"></script>
+    <script src="bower_components/angular-bcrypt/dist/dtrw.bcrypt-df34c8d1.js"></script>
+
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+            <div class="container">
+                <h1>Login form</h1>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">Email:</label>
+                        <div class="col-sm-10">
+                            <input type="email" ng-model="emaill" class="form-control" id="email"
+                                   placeholder="Enter email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">Password:</label>
+                        <div class="col-sm-10">
+                            <input type="password" ng-model="passwordd" class="form-control" id="pwd"
+                                   placeholder="Enter password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" ng-click='login()' class="btn btn-default">Login</button>
+                            <button type="submit" ng-click='register()' class="btn btn-default">Register</button>
+                            <button type="submit" ng-click='logout()' class="btn btn-default">Logout</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">content:</label>
+                        <div class="col-sm-10">
+                            <h2> {{content}} </h2>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">statuscode:</label>
+                        <div class="col-sm-10">
+                            <h2> {{statuscode}} </h2>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">statustext:</label>
+                        <div class="col-sm-10">
+                            <h2> {{statustext}} </h2>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

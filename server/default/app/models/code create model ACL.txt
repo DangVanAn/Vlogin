@@ -1,0 +1,31 @@
+CREATE TABLE `roles` (
+  `name` VARCHAR(32) NOT NULL,
+  `description` TEXT,
+  PRIMARY KEY(`name`)
+);
+
+CREATE TABLE `access_list` (
+  `roles_name` VARCHAR(32) NOT NULL,
+  `resources_name` VARCHAR(32) NOT NULL,
+  `access_name` VARCHAR(32) NOT NULL,
+  `allowed` INT(3) NOT NULL,
+  PRIMARY KEY(`roles_name`, `resources_name`, `access_name`)
+);
+
+CREATE TABLE `resources` (
+  `name` VARCHAR(32) NOT NULL,
+  `description` TEXT,
+  PRIMARY KEY(`name`)
+);
+
+CREATE TABLE `resources_accesses` (
+  `resources_name` VARCHAR(32) NOT NULL,
+  `access_name` VARCHAR(32) NOT NULL,
+  PRIMARY KEY(`resources_name`, `access_name`)
+);
+
+CREATE TABLE `roles_inherits` (
+  `roles_name` VARCHAR(32) NOT NULL,
+  `roles_inherit` VARCHAR(32) NOT NULL,
+  PRIMARY KEY(roles_name, roles_inherit)
+);
