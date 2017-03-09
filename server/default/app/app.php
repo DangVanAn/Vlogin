@@ -40,11 +40,11 @@ $app->before(function () use ($app, $acl) {
 
 $app->post('/login', function () use ($app) {
 
-    $user1 = $app->request->getJsonRawBody();
-    $user = $user1;
+    $user = $app->request->getJsonRawBody();
+    $pass = $user->password;
     $user = Users::findFirst(
         [
-            "(email = :email: OR username = :email:)",
+            "(email = :email:)",
             "bind" => [
                 "email" => $user->email,
                 "password" => $user->password,
@@ -55,7 +55,7 @@ $app->post('/login', function () use ($app) {
 
     if ($user !== false) {
 
-        if ($this->security->checkHash($user1->password, $user->password)) {
+        if ($this->security->checkHash($pass, $user->password)) {
             $app["session"]->set(
                 "auth",
                 [
@@ -103,7 +103,7 @@ $app->post('/signup', function () use ($app) {
 
         //$user->username = $post->username;
         $user->email = $post->email;
-        $user->password = $post->password;
+        $user->password = $this->security->hash($post->password);
 
         // Create a response
         $response = new Response();

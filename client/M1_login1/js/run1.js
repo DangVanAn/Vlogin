@@ -43,25 +43,25 @@ app.controller('myCtrl', function ($scope, bcrypt, $http) {
         var cloneemaill = $scope.emaill;
         var clonepass = $scope.passwordd;
 
-        hash = bcrypt.hashSync(clonepass, 10);
+        //hash = bcrypt.hashSync(clonepass, 10);
 
         $gift =
             {
                 'email': cloneemaill,
-                'password': hash
+                'password': clonepass
             };
 
         //$scope.content = $gift;
-
-        delete $http.defaults.headers.common.Authorization;
+        //delete $http.defaults.headers.common.Authorization;
+        // contentType: "application/json; charset=utf-8",
+        // dataType: "json"
         $urll = 'http://localhost:8080/default/signup';
 
         $http({
             method: 'POST',
             url: $urll,
             data: $gift,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json"
+
         }).then(function successCallback(response) {
             $scope.content = response.data;
             $scope.statuscode = response.status;
